@@ -1,5 +1,5 @@
 <div class="col-md-4">
-    <?php echo form_open('products/add_product'); ?>
+    <?php echo form_open('Products/add_product'); ?>
     <form>
         <br>
         <div class="form-group">
@@ -18,7 +18,7 @@
         </div>
         <br>
         <br>
-        <a type="a" class="btn btn-danger" href="<?= base_url('home/view_products'); ?>">Cancel</a>
         <button type="submit" class="btn btn-primary">Submit</button>
+        <a type="a" class="btn btn-danger" href="<?= base_url('home/view_products'); ?>">Cancel</a>
     </form>
 </div>
