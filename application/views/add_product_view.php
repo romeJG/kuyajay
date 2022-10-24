@@ -1,6 +1,11 @@
-<div class="col-md-4">
-    <?php if (null != validation_errors()) echo validation_errors(); ?>
-</div>
+<!-- if not null si validation errors lalabas si div class -->
+<!-- validation errors are the errors from the form. -->
+<?php if (!null == validation_errors()) : ?>
+    <div class="alert alert-danger col-md-4" role="alert">
+        <?php echo validation_errors(); ?>
+    </div>
+<?php endif; ?>
+
 <div class="col-md-4">
     <?php echo form_open('Products/add_product'); ?>
     <form>

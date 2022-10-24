@@ -19,7 +19,8 @@ class Products extends CI_Controller
         //set form validation rules
         $this->form_validation->set_rules('prod_name', 'Product Name', 'required');
         $this->form_validation->set_rules('prod_description', 'Product description', 'required');
-        $this->form_validation->set_rules('prod_price', 'Product Price', 'required');
+        // use required|numeric to add multiple validations
+        $this->form_validation->set_rules('prod_price', 'Product Price', 'required|numeric');
 
         // Run the form validation
         // if the return of the validation is false it will refresh the page index().
