@@ -5,24 +5,23 @@
         <?php echo validation_errors(); ?>
     </div>
 <?php endif; ?>
-
 <div class="col-md-4">
     <?php echo form_open('Products/add_product'); ?>
     <form>
         <br>
         <div class="form-group">
             <label for="prod_name">Prod name</label>
-            <input name="prod_name" type="text" class="form-control" id="prod_name" placeholder="Prod name" value="">
+            <input name="prod_name" type="text" class="form-control" id="prod_name" placeholder="Prod name" value="<?php echo set_value('prod_name'); ?>">
         </div>
         <br>
         <div class="form-group">
             <label for="prod_description">Product Description</label>
-            <input name="prod_description" type="text" class="form-control" id="prod_description" placeholder="Product Description" value="">
+            <input name="prod_description" type="text" class="form-control" id="prod_description" placeholder="Product Description" value="<?php echo set_value('prod_description'); ?>">
         </div>
         <br>
         <div class="form-group">
             <label for="prod_price">Product Price</label>
-            <input name="prod_price" type="text" class="form-control" id="prod_price" placeholder="Product Price" value="">
+            <input name="prod_price" type="text" class="form-control" id="prod_price" placeholder="Product Price" value="<?php echo set_value('prod_price'); ?>">
         </div>
         <br>
         <br>
