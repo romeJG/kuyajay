@@ -14,11 +14,19 @@ class Products extends CI_Controller
         $this->load->view('include/navbar');
         $this->load->view('add_product_view');
     }
-    public function add_products()
+    public function add_product()
     {
         //set form validation rules
         $this->form_validation->set_rules('prod_name', 'Product Name', 'required');
-        $this->form_validation->set_rules('prod_description', 'Product Name', 'required');
-        $this->form_validation->set_rules('prod_price', 'Product Name', 'required');
+        $this->form_validation->set_rules('prod_description', 'Product description', 'required');
+        $this->form_validation->set_rules('prod_price', 'Product Price', 'required');
+
+        // Run the form validation
+        // if the return of the validation is false it will refresh the page index().
+        if ($this->form_validation->run() == FALSE) {
+
+            $this->index();
+        } else {
+        }
     }
 }
