@@ -24,9 +24,8 @@
                         <a type="a" class="btn btn-secondary">Edit Product</a>
                         <a type="a" class="btn btn-danger">Delete Product</a>
                     </td>
-                </tr>
-            <?php endforeach; ?>
+                </tr>asdasd
         </tbody>
     </table>
 
-    <a href="<?php echo base_url('home'); ?>">Back to Home</a>
+    <a type="a" href="<?= base_url('home'); ?>">Back to Home</a>

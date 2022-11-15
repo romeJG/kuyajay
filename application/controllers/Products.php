@@ -13,9 +13,36 @@ class Products extends CI_Controller
         $this->load->view('include/header', $data);
         $this->load->view('include/navbar');
         $this->load->view('add_product_view');
+
+        //this should be in functions
+        $this->load->library('upload');
+        $this->load->library('image_lib');
     }
     public function add_product()
     {
+
+        //set conofiguration for the upload library
+        $image_config['upload_path'] = './uploads/images/';
+        $image_config['allowed_types'] = 'gif|jpg|png|jpeg|bmp';
+        // $config['max_size'] = '10000';
+        // $config['max_width'] = '10000';
+        // $config['max_height'] = '10000';
+        // $config['encrypt_name'] = true;
+
+        $this->upload->initialize($image_config);
+
+        //set configurations for image manipulation library
+        $manip_config['image_library'] = 'gd2';
+        $manip_config['maintain_ratio'] = true;
+        $manip_config['width'] = 75;
+        $manip_config['height'] = 50;
+        $manip_config['new_image'] = './uploads/images/thumbs/';
+        $manip_config['source_image'] = '';
+        $manip_config['create_thumb'] = true;
+        // $manip_config['tumb_marker'] = true;
+        $this->image_lib->initialize($manip_config);
+
+
 
         $this->load->library('form_validation'); //includes the form validation library.
         //set form validation rules
@@ -41,6 +68,21 @@ class Products extends CI_Controller
             $this->load->model('Products_model');
             //save the data to the database
             $this->Products_model->save_product($data);
+
+            if ($this->upload->do_upload('prod_image')) {
+                $image_data = $this->upload->data();
+                $manip_config['source_image'] = $image_data["full_path"];
+                $this->image_lib->initialize($manip_config);
+                $this->image_lib->resize();
+                $this->image_lib->clear();
+            } else {
+                $error = array('error' => $this->upload->display_errors());
+                $this->index();
+            }
+
+
+
+
             redirect('home/view_products');
         }
     }

@@ -6,7 +6,7 @@
     </div>
 <?php endif; ?>
 <div class="col-md-4">
-    <?php echo form_open('Products/add_product'); ?>
+    <?php echo form_open_multipart('Products/add_product'); ?>
     <form>
         <br>
         <div class="form-group">
@@ -22,6 +22,12 @@
         <div class="form-group">
             <label for="prod_price">Product Price</label>
             <input name="prod_price" type="text" class="form-control" id="prod_price" placeholder="Product Price" value="<?php echo set_value('prod_price'); ?>">
+        </div>
+        <br>
+        <br>
+        <div class="form-group">
+            <label for="prod_imag">Product Image</label>
+            <input name="prod_image" type="file" class="form-control" id="prod_image" placeholder="Product Image">
         </div>
         <br>
         <br>
